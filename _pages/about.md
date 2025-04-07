@@ -16,5 +16,4 @@ My interests are in behavioral economics, development economics and industrial o
 ## Working Papers
 
 [**Non-User Utility and Market Power: The Case of Smartphones**](https://www.nber.org/papers/w33642)
-with Leonardo Bursztyn, Rafael Jiménez-Durán, Aaron Leonard & Christopher Roth
-
+with Leonardo Bursztyn, Rafael Jiménez-Durán, Filip Milojević & Christopher Roth
