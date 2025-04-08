@@ -26,3 +26,7 @@ with [Samuel Chang](https://www.samuelchang.com/about-me), Andrew Kennedy & [Joh
 
 **The Role of Informal Markets for Medicines: Experimental Evidence from Sierra Leone** with Fatu E. Conteh, [Michael Dinerstein](https://sites.google.com/site/michaeldinerstein/), Sofia Gallo & [Anne Karing](https://sites.google.com/view/annekaring/home?authuser=0)
 
+**Social Media Markets: Evidence from Agriculture** with Drew Burd 
+
+**Experiential Learning and the Valuation of Health Goods** with Drew Brud
+
