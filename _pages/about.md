@@ -19,7 +19,7 @@ My interests are in behavioral economics, development economics and industrial o
 with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), Filip Milojević & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home)
 
 
-**12 Best Practices for Leveraging Generative AI in Experimental Research**]([https://www.nber.org/papers/w33642](https://www.nber.org/papers/w33025))
+[**12 Best Practices for Leveraging Generative AI in Experimental Research**]([https://www.nber.org/papers/w33642](https://www.nber.org/papers/w33025))
 with [Samuel Chang](https://www.samuelchang.com/about-me), Andrew Kennedy & [John List](https://voices.uchicago.edu/jlist/)
 
 ## Works in Progress
