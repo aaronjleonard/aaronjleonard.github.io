@@ -28,5 +28,11 @@ with [Samuel Chang](https://www.samuelchang.com/about-me), Andrew Kennedy & [Joh
 
 **Social Media Markets: Evidence from Agriculture** with Drew Burd 
 
-**Experiential Learning and the Valuation of Health Goods** with Drew Brud
+**Seeing is Believing: Experiential Learning and the Valuation of Health Goods** with Drew Brud
+
+**Purchasing Hope** with Drew Brud
+
+**Meat Traps** with Drew Brud and Jacob Schmiess
+
+**Haters Clubs** with Drew Brud
 
