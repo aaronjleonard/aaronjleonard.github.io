@@ -16,7 +16,7 @@ My interests are in behavioral economics, development economics and industrial o
 ## Working Papers
 
 [**Measuring Markets for Network Goods**](https://drive.google.com/file/d/1TUd3bHdSRXB4ZSbhnaGBUmIIo8EEmhJL/view?usp=sharing)
-with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), [Matthew Gentzkow ](https://matthewgentzkow.com), Filip Milojević & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home)
+with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), [Matthew Gentzkow](https://matthewgentzkow.com), Filip Milojević & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home)
 
 [**Non-User Utility and Market Power: The Case of Smartphones**](https://www.nber.org/papers/w33642)
 with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), Filip Milojević & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home)
