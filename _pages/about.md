@@ -15,7 +15,6 @@ My interests are in behavioral economics, development economics and industrial o
 
 ## Working Papers
 
-https://github.com/aaronjleonard/aaronjleonard.github.io
 [**Measuring Markets for Network Goods**](https://github.com/aaronjleonard/aaronjleonard.github.io/files/Measuring_Markets.pdf)
 with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), [Matthew Gentzkow ](https://matthewgentzkow.com), Filip Milojević & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home)
 
