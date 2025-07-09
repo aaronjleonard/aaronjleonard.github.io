@@ -13,9 +13,11 @@ I'm a third year PhD student in the [Kenneth C. Griffin Department of Economics]
 
 My interests are in behavioral economics, development economics and industrial organization, with a particular focus on digital platforms and technology.
 
+My CV is available [here](https://github.com/aaronjleonard/aaronjleonard.github.io/blob/master/files/AaronLeonard-CV-July2025.pdf).
+
 ## Working Papers
 
-[**Measuring Markets for Network Goods**](https://drive.google.com/file/d/1TUd3bHdSRXB4ZSbhnaGBUmIIo8EEmhJL/view?usp=sharing)
+[**Measuring Markets for Network Goods**](https://www.nber.org/papers/w33901)
 with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), [Matthew Gentzkow](https://matthewgentzkow.com), Filip Milojević & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home)
 
 [**Non-User Utility and Market Power: The Case of Smartphones**](https://www.nber.org/papers/w33642)
