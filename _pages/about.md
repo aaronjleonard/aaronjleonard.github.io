@@ -10,8 +10,7 @@ redirect_from:
 
 I'm a third year PhD student in the [Kenneth C. Griffin Department of Economics](https://economics.uchicago.edu/) at UChicago.
 
-
-My interests are in behavioral economics, development economics and industrial organization, with a particular focus on digital platforms and technology.
+My interests are in development economics, industrial organization and behavioral economics, with a particular focus on digital platforms and technology.
 
 My CV is available [here](https://github.com/aaronjleonard/aaronjleonard.github.io/blob/master/files/AaronLeonard-CV-July2025.pdf).
 
@@ -33,4 +32,3 @@ with [Samuel Chang](https://www.samuelchang.com/about-me), Andrew Kennedy & [Joh
 **Social Media Markets: Evidence from Agriculture** with Drew Burd 
 
 **Seeing is Believing: Experiential Learning and the Valuation of Health Goods** with Drew Burd
-
