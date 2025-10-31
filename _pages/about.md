@@ -29,7 +29,9 @@ with [Samuel Chang](https://www.samuelchang.com/about-me), Andrew Kennedy & [Joh
 
 **The Role of Informal Markets for Medicines: Experimental Evidence from Sierra Leone** with Fatu E. Conteh, [Michael Dinerstein](https://sites.google.com/site/michaeldinerstein/), Sofia Gallo & [Anne Karing](https://sites.google.com/view/annekaring/home?authuser=0) 
 
-**Network Effects and Addiction: Experimental Evidence from Boda Boda Drivers in Kenya** with Drew Burd 
+**The Welfare Effects of Gambling** with Drew Burd 
+
+**Market Power in Mobile Money Markets** with Drew Burd and [Filip Milojević](https://fmilojevic.github.io)
 
 **Seeing is Believing: Experiential Learning and the Valuation of Health Goods** with Drew Burd
 
