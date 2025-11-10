@@ -23,7 +23,7 @@ with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán]
 with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), [Filip Milojević](https://fmilojevic.github.io) & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home)
 
 [**12 Best Practices for Leveraging Generative AI in Experimental Research**](https://www.nber.org/papers/w33025)
-with [Samuel Chang](https://www.samuelchang.com/about-me), Andrew Kennedy & [John List](https://voices.uchicago.edu/jlist/)
+with [Samuel Chang](https://www.samuelchang.com/about-me), Andrew Kennedy & [John List](https://voices.uchicago.edu/jlist/), R&R at JEBO
 
 ## Works in Progress
 
