@@ -20,13 +20,13 @@ My CV is available [here](https://github.com/aaronjleonard/aaronjleonard.github.
 with [Leonardo Bursztyn](https://leonardobursztyn.com), [Alex Imas](http://www.aleximas.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home)
 
 [**Measuring Markets for Network Goods**](https://www.nber.org/papers/w33901)
-with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), [Matthew Gentzkow](https://matthewgentzkow.com), [Filip Milojević](https://fmilojevic.github.io) & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home)
+with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), [Matthew Gentzkow](https://matthewgentzkow.com), [Filip Milojević](https://fmilojevic.github.io) & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home), _Revise and Resubmit at Review of Economic Studies_
 
 [**Non-User Utility and Market Power: The Case of Smartphones**](https://www.nber.org/papers/w33642)
 with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), [Filip Milojević](https://fmilojevic.github.io) & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home)
 
 [**12 Best Practices for Leveraging Generative AI in Experimental Research**](https://www.nber.org/papers/w33025)
-with [Samuel Chang](https://www.samuelchang.com/about-me), Andrew Kennedy & [John List](https://voices.uchicago.edu/jlist/), R&R at JEBO
+with [Samuel Chang](https://www.samuelchang.com/about-me), Andrew Kennedy & [John List](https://voices.uchicago.edu/jlist/), _Revise and Resubmit at Journal of Economic Behavior and Organization_
 
 ## Works in Progress
 
