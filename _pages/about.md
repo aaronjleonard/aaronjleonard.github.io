@@ -17,7 +17,7 @@ My CV is available [here](https://github.com/aaronjleonard/aaronjleonard.github.
 ## Working Papers
 
 [**Social Dynamics of AI Adoption**](https://www.nber.org/papers/w34488)
-with [Leonardo Bursztyn](https://leonardobursztyn.com), [Alex Imas](http://www.aleximas.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home)
+with [Leonardo Bursztyn](https://leonardobursztyn.com), [Alex Imas](http://www.aleximas.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home), _Revise and Resubmit at Proceedings of the National Academy of Sciences_
 
 [**Measuring Markets for Network Goods**](https://www.nber.org/papers/w33901)
 with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), [Matthew Gentzkow](https://matthewgentzkow.com), [Filip Milojević](https://fmilojevic.github.io) & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home), _Revise and Resubmit at Review of Economic Studies_
