@@ -16,17 +16,23 @@ My CV is available [here](https://github.com/aaronjleonard/aaronjleonard.github.
 
 ## Working Papers
 
-[**Social Dynamics of AI Adoption**](https://www.nber.org/papers/w34488)
-with [Leonardo Bursztyn](https://leonardobursztyn.com), [Alex Imas](http://www.aleximas.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home), _Revise and Resubmit at Proceedings of the National Academy of Sciences_
+[**Why Bans Fail: Tipping Points and Australia's Social Media Ban**](https://www.nber.org/papers/w35162)
+with [Leonardo Bursztyn](https://leonardobursztyn.com), [Angela Duckworth](https://angeladuckworth.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), [Filip Milojević](https://fmilojevic.github.io), [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home) & [Cass R. Sunstein](https://hls.harvard.edu/faculty/cass-r-sunstein/)
 
 [**Measuring Markets for Network Goods**](https://www.nber.org/papers/w33901)
-with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), [Matthew Gentzkow](https://matthewgentzkow.com), [Filip Milojević](https://fmilojevic.github.io) & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home), _Revise and Resubmit at Review of Economic Studies_
+with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), [Matthew Gentzkow](https://matthewgentzkow.com), [Filip Milojević](https://fmilojevic.github.io) & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home), _Revise and Resubmitted at Review of Economic Studies_
+
+[**Social Dynamics of AI Adoption**](https://www.nber.org/papers/w34488)
+with [Leonardo Bursztyn](https://leonardobursztyn.com), [Alex Imas](http://www.aleximas.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home), _Revise and Resubmitted at Proceedings of the National Academy of Sciences_
 
 [**Non-User Utility and Market Power: The Case of Smartphones**](https://www.nber.org/papers/w33642)
 with [Leonardo Bursztyn](https://leonardobursztyn.com), [Rafael Jiménez-Durán](https://www.rafaeljjd.com), [Filip Milojević](https://fmilojevic.github.io) & [Christopher Roth](https://sites.google.com/site/chrisrotheconomics/home)
 
+
+## Publications 
+
 [**12 Best Practices for Leveraging Generative AI in Experimental Research**](https://www.nber.org/papers/w33025)
-with [Samuel Chang](https://www.samuelchang.com/about-me), Andrew Kennedy & [John List](https://voices.uchicago.edu/jlist/), _Revise and Resubmit at Journal of Economic Behavior and Organization_
+with [Samuel Chang](https://www.samuelchang.com/about-me), Andrew Kennedy & [John List](https://voices.uchicago.edu/jlist/), _Journal of Economic Behavior and Organization_, 2026, Vol 246, 107564. 
 
 ## Works in Progress
 
@@ -35,8 +41,3 @@ with [Samuel Chang](https://www.samuelchang.com/about-me), Andrew Kennedy & [Joh
 **The Welfare Effects of Gambling** with Drew Burd 
 
 **Market Power in Mobile Money Markets** with Drew Burd and [Filip Milojević](https://fmilojevic.github.io)
-
-**Seeing is Believing: Experiential Learning and the Valuation of Health Goods** with Drew Burd
-
-**The Vote-Buy Gap as a Coordination Failure** with Drew Burd and [Filip Milojević](https://fmilojevic.github.io)
-
