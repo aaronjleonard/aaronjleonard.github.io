@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Aaron Leonard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16181c;
+    --muted:#6c727c;
+    --line:#e8e8ea;
+    --bg:#ffffff;
+    --accent:#0e6b63;        /* deep teal — swap to taste */
+    --accent-soft:#e6f1f0;
+    --maxw:900px;
+    --sans:"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono:"Space Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased}
+  a{color:var(--accent); text-decoration:none; transition:color .15s, border-color .15s, background .15s}
+  a:hover{color:var(--ink)}
+
+  /* ---------- sticky nav ---------- */
+  .nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.85); backdrop-filter:saturate(180%) blur(10px); border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:var(--maxw); margin:0 auto; padding:0 28px; height:60px; display:flex; align-items:center; justify-content:flex-end}
+  .nav-name{font-weight:700; font-size:16px; letter-spacing:-.2px}
+  .nav-links{display:flex; gap:4px}
+  .nav-links a{font-family:var(--mono); font-size:13px; color:var(--muted); padding:7px 11px; border-radius:6px}
+  .nav-links a:hover{color:var(--ink); background:var(--accent-soft)}
+  .nav-links a.active{color:var(--accent)}
+  @media(max-width:560px){ .nav-name{display:none} .nav-inner{justify-content:center; padding:0 14px} .nav-links a{padding:7px 8px} }
+
+  /* ---------- layout ---------- */
+  main{max-width:var(--maxw); margin:0 auto; padding:0 28px 110px}
+  /* two-column rows: pinned label | content */
+  .row{display:grid; grid-template-columns:160px 1fr; gap:28px; padding-top:56px; scroll-margin-top:74px}
+  .label{font-family:var(--mono); font-size:12px; font-weight:700; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); padding-top:6px}
+  .label .pin{position:sticky; top:84px; white-space:nowrap}
+  @media(max-width:680px){
+    .row{grid-template-columns:1fr; gap:8px; padding-top:44px}
+    .label{padding-top:0}
+    .label .pin{position:static}
+  }
+
+  /* ---------- hero (compact inline) ---------- */
+  .hero{padding-top:64px}
+  .hero .id{display:flex; align-items:center; gap:14px; margin:0 0 14px}
+  .hero img{width:148px; height:148px; border-radius:50%; object-fit:cover; flex:0 0 auto}
+  .hero h1{font-size:23px; line-height:1.1; font-weight:700; letter-spacing:-.3px; margin:0}
+  .hero .role{color:var(--muted); font-size:13px; font-family:var(--mono); margin:7px 0 0}
+  .hero .idtext{text-align:left}
+  .hero .idtext .contact{justify-content:flex-start; margin-top:7px}
+  .contact{display:flex; flex-wrap:wrap; gap:7px 16px; font-family:var(--mono); font-size:13.5px}
+  .contact a{color:var(--ink); border-bottom:1px solid var(--line); padding-bottom:1px}
+  .contact a:hover{border-color:var(--accent); color:var(--accent)}
+
+  .lede{font-size:19px; line-height:1.55; color:#3a3f47; margin:0}
+
+  /* ---------- papers ---------- */
+  .paper{display:block; padding:20px 0; border-top:1px solid var(--line)}
+  .paper:first-child{border-top:none; padding-top:4px}
+  .paper .num{display:none}
+  .paper .title{font-size:18.5px; font-weight:600; line-height:1.32; margin:0 0 5px; letter-spacing:-.2px}
+  .paper .authors{color:var(--muted); font-size:14.5px; margin:0 0 6px}
+  .paper .status{font-family:var(--mono); font-size:12.5px; color:var(--ink); display:inline-block}
+  .paper .status.accepted{color:#fff; background:var(--accent); padding:2px 9px; border-radius:5px; font-weight:700}
+  .featured{margin-top:8px; font-family:var(--mono); font-size:12px; color:var(--muted)}
+  .featured .lbl{text-transform:uppercase; letter-spacing:.06em; margin-right:7px}
+  .featured a{display:inline-block; color:var(--accent); border:1px solid var(--accent-soft); padding:2px 9px; border-radius:5px; margin:3px 6px 0 0; font-size:11.5px}
+  .featured a:hover{background:var(--accent); border-color:var(--accent); color:#fff}
+
+  /* ---------- wip ---------- */
+  .wip{padding:13px 0; border-top:1px solid var(--line)}
+  .wip:first-child{border-top:none; padding-top:2px}
+  .wip .t{font-weight:600; font-size:16px}
+  .wip .a{color:var(--muted); font-size:14.5px}
+
+  footer{max-width:var(--maxw); margin:0 auto; padding:34px 28px 60px; color:var(--muted); font-family:var(--mono); font-size:12px; border-top:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-links">
+      <a href="#about">about</a>
+      <a href="#research">research</a>
+      <a href="#publications">publications</a>
+      <a href="#wip">in&nbsp;progress</a>
+      <a href="https://github.com/aaronjleonard/aaronjleonard.github.io/blob/master/files/AaronLeonard-CV-July2025.pdf">cv</a>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <header class="hero" id="about">
+    <div class="id">
+      <img src="/images/profile-sq.jpg" alt="Aaron Leonard">
+      <div class="idtext">
+        <h1>Aaron Leonard</h1>
+        <p class="role">PhD candidate · UChicago Economics</p>
+        <div class="contact">
+          <a href="mailto:aaronleonard@uchicago.edu">email</a>
+          <a href="https://github.com/aaronjleonard/aaronjleonard.github.io/blob/master/files/AaronLeonard-CV-July2025.pdf">cv</a>
+          <a href="https://scholar.google.com/citations?user=9VxO4EYAAAAJ&hl=en">scholar</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="row" style="padding-top:40px">
+    <div class="label"><div class="pin">Bio</div></div>
+    <p class="lede">I'm a fourth year PhD student in the <a href="https://economics.uchicago.edu/">Kenneth C. Griffin Department of Economics</a> at UChicago. My interests are in development economics, industrial organization and behavioral economics.</p>
+  </div>
+
+  <div class="row" id="research">
+    <div class="label"><div class="pin">Working Papers</div></div>
+    <div>
+      <div class="paper">
+        <div class="num">01</div>
+        <div>
+          <p class="title"><a href="https://www.nber.org/papers/w35162">Why Bans Fail: Tipping Points and Australia's Social Media Ban</a></p>
+          <p class="authors">with <a href="https://leonardobursztyn.com">Leonardo Bursztyn</a>, <a href="https://angeladuckworth.com">Angela Duckworth</a>, <a href="https://www.rafaeljjd.com">Rafael Jiménez-Durán</a>, <a href="https://fmilojevic.github.io">Filip Milojević</a>, <a href="https://sites.google.com/site/chrisrotheconomics/home">Christopher Roth</a> &amp; <a href="https://hls.harvard.edu/faculty/cass-r-sunstein/">Cass R. Sunstein</a></p>
+          <p class="featured"><span class="lbl">Featured in</span>
+            <a href="https://www.nytimes.com/2026/05/08/opinion/social-media-teens-phones-australia-solutions.html">New York Times</a>
+            <a href="https://www.faz.net/aktuell/wirtschaft/wirtschaftswissen/social-media-verbot-in-australien-die-coolen-bleiben-online-accg-200822182.html">Frankfurter Allgemeine</a>
+            <a href="https://marginalrevolution.com/marginalrevolution/2026/05/the-social-media-ban-in-australia-how-is-it-going.html">Marginal Revolution</a>
+          </p>
+        </div>
+      </div>
+      <div class="paper">
+        <div class="num">02</div>
+        <div>
+          <p class="title"><a href="https://www.nber.org/papers/w35279">Non-User Externalities</a></p>
+          <p class="authors">with <a href="https://leonardobursztyn.com">Leonardo Bursztyn</a>, <a href="https://janfasnacht.com">Jan Fasnacht</a>, <a href="https://www.benjaminhandel.com">Benjamin Handel</a>, <a href="https://fmilojevic.github.io">Filip Milojević</a>, <a href="https://sites.google.com/site/chrisrotheconomics/home">Christopher Roth</a>, <a href="https://hls.harvard.edu/faculty/cass-r-sunstein/">Cass R. Sunstein</a> &amp; <a href="https://www.rafaeljjd.com">Rafael Jiménez-Durán</a></p>
+        </div>
+      </div>
+      <div class="paper">
+        <div class="num">03</div>
+        <div>
+          <p class="title"><a href="https://www.nber.org/papers/w34488">Social Dynamics of AI Adoption</a></p>
+          <p class="authors">with <a href="https://leonardobursztyn.com">Leonardo Bursztyn</a>, <a href="http://www.aleximas.com">Alex Imas</a>, <a href="https://www.rafaeljjd.com">Rafael Jiménez-Durán</a> &amp; <a href="https://sites.google.com/site/chrisrotheconomics/home">Christopher Roth</a></p>
+          <p class="status">Revised &amp; Resubmitted · PNAS</p>
+        </div>
+      </div>
+      <div class="paper">
+        <div class="num">04</div>
+        <div>
+          <p class="title"><a href="https://www.nber.org/papers/w33642">Non-User Utility and Market Power: The Case of Smartphones</a></p>
+          <p class="authors">with <a href="https://leonardobursztyn.com">Leonardo Bursztyn</a>, <a href="https://www.rafaeljjd.com">Rafael Jiménez-Durán</a>, <a href="https://fmilojevic.github.io">Filip Milojević</a> &amp; <a href="https://sites.google.com/site/chrisrotheconomics/home">Christopher Roth</a></p>
+          <p class="featured"><span class="lbl">Featured in</span>
+            <a href="https://www.economist.com/finance-and-economics/2025/04/24/what-price-cool-31-a-month-according-to-students">The Economist</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" id="publications">
+    <div class="label"><div class="pin">Publications</div></div>
+    <div>
+      <div class="paper">
+        <div class="num">★</div>
+        <div>
+          <p class="title"><a href="https://www.nber.org/papers/w33901">Measuring Markets for Network Goods</a></p>
+          <p class="authors">with <a href="https://leonardobursztyn.com">Leonardo Bursztyn</a>, <a href="https://www.rafaeljjd.com">Rafael Jiménez-Durán</a>, <a href="https://matthewgentzkow.com">Matthew Gentzkow</a>, <a href="https://fmilojevic.github.io">Filip Milojević</a> &amp; <a href="https://sites.google.com/site/chrisrotheconomics/home">Christopher Roth</a></p>
+          <p class="status">Accepted · Review of Economic Studies</p>
+        </div>
+      </div>
+      <div class="paper">
+        <div class="num">★</div>
+        <div>
+          <p class="title"><a href="https://www.nber.org/papers/w33025">12 Best Practices for Leveraging Generative AI in Experimental Research</a></p>
+          <p class="authors">with <a href="https://www.samuelchang.com/about-me">Samuel Chang</a>, Andrew Kennedy &amp; <a href="https://voices.uchicago.edu/jlist/">John List</a></p>
+          <p class="status">J. Econ. Behavior &amp; Organization · 2026 · 246, 107564</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" id="wip">
+    <div class="label"><div class="pin">In Progress</div></div>
+    <div>
+      <div class="wip">
+        <p class="t">The Role of Informal Markets for Medicines: Experimental Evidence from Sierra Leone</p>
+        <p class="a">with Fatu E. Conteh, <a href="https://sites.google.com/site/michaeldinerstein/">Michael Dinerstein</a>, Sofia Gallo &amp; <a href="https://sites.google.com/view/annekaring/home?authuser=0">Anne Karing</a></p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer>© 2026 Aaron Leonard · University of Chicago</footer>
+
+<script>
+  const links = [...document.querySelectorAll('.nav-links a')];
+  const map = new Map(links.map(a => [a.getAttribute('href').slice(1), a]));
+  const obs = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){
+      links.forEach(l=>l.classList.remove('active'));
+      const a = map.get(e.target.id); if(a) a.classList.add('active');
+    }});
+  },{rootMargin:'-45% 0px -50% 0px'});
+  document.querySelectorAll('[id]').forEach(s=>{ if(map.has(s.id)) obs.observe(s); });
+</script>
+
+</body>
+</html>
