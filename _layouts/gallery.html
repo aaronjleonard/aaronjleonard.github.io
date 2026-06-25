@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Field Photos · Kenya — Aaron Leonard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#16181c; --muted:#6c727c; --line:#e8e8ea; --bg:#ffffff;
+    --accent:#0e6b63; --accent-soft:#e6f1f0; --maxw:900px;
+    --sans:"Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --mono:"Space Mono", ui-monospace, "SF Mono", Menlo, monospace;
+  }
+  *{box-sizing:border-box}
+  body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--sans); font-size:17px; line-height:1.62; -webkit-font-smoothing:antialiased}
+  a{color:var(--accent); text-decoration:none}
+  a:hover{color:var(--ink)}
+
+  .nav{position:sticky; top:0; z-index:50; background:rgba(255,255,255,.85); backdrop-filter:saturate(180%) blur(10px); border-bottom:1px solid var(--line)}
+  .nav-inner{max-width:var(--maxw); margin:0 auto; padding:0 28px; height:60px; display:flex; align-items:center; justify-content:space-between}
+  .nav-inner .back{font-family:var(--mono); font-size:13px; color:var(--muted); display:inline-flex; align-items:center; gap:7px}
+  .nav-inner .back:hover{color:var(--accent)}
+  .nav-inner .back svg{width:15px; height:15px}
+  .nav-inner .place{font-family:var(--mono); font-size:12px; color:var(--accent); display:inline-flex; align-items:center; gap:5px; text-transform:uppercase; letter-spacing:.05em}
+  .nav-inner .place svg{width:13px; height:13px}
+
+  main{max-width:var(--maxw); margin:0 auto; padding:40px 28px 90px}
+  .intro{font-size:16px; color:var(--muted); margin:0 0 26px; max-width:60ch}
+
+  .gallery{display:grid; grid-template-columns:repeat(2,1fr); gap:16px}
+  .gallery img{width:100%; aspect-ratio:1/1; object-fit:cover; object-position:center; border-radius:12px; display:block; border:1px solid var(--line)}
+  @media(max-width:560px){ .gallery{grid-template-columns:1fr} }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="back" href="/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>Aaron Leonard</a>
+    <span class="place"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>Kenya</span>
+  </div>
+</nav>
+
+<main>
+  <div class="gallery">
+    <img src="/images/kenya-boda-ride.jpg" alt="Riding a boda boda during field work near Nairobi">
+    <img src="/images/kenya-field.jpg" alt="A roadside boda boda shelter near Nairobi">
+    <img src="/images/kenya-discgolf.jpg" alt="Kenya Open disc golf event on the savanna">
+    <img src="/images/kenya-tea.jpg" alt="Tea plantation in the Kenyan highlands">
+    <img src="/images/kenya-cow.jpg" alt="In the field in Kenya">
+    <img src="/images/kenya-golf.jpg" alt="On a golf course in Kenya">
+  </div>
+</main>
+
+</body>
+</html>

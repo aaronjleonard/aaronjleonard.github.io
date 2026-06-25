@@ -56,11 +56,18 @@
   .hero .role{color:var(--muted); font-size:13px; font-family:var(--mono); margin:7px 0 0}
   .hero .idtext{text-align:left}
   .hero .idtext .contact{justify-content:flex-start; margin-top:7px}
-  .contact{display:flex; flex-wrap:wrap; gap:7px 16px; font-family:var(--mono); font-size:13.5px}
-  .contact a{color:var(--ink); border-bottom:1px solid var(--line); padding-bottom:1px}
-  .contact a:hover{border-color:var(--accent); color:var(--accent)}
+  .contact{display:flex; flex-wrap:wrap; gap:8px 16px; font-family:var(--mono); font-size:13.5px}
+  .contact a{display:inline-flex; align-items:center; gap:6px; color:var(--ink)}
+  .contact a svg{width:15px; height:15px; flex:0 0 auto}
+  .contact a:hover{color:var(--accent)}
 
   .lede{font-size:19px; line-height:1.55; color:#3a3f47; margin:0}
+
+  /* ---------- field photos link ---------- */
+  .fieldlink{margin-top:48px; font-family:var(--mono); font-size:12px}
+  .fieldlink a{display:inline-flex; align-items:center; gap:7px; color:var(--muted)}
+  .fieldlink a:hover{color:var(--accent)}
+  .fieldlink svg{width:14px; height:14px}
 
   /* ---------- papers ---------- */
   .paper{display:block; padding:20px 0; border-top:1px solid var(--line)}
@@ -107,9 +114,10 @@
         <h1>Aaron Leonard</h1>
         <p class="role">PhD candidate · UChicago Economics</p>
         <div class="contact">
-          <a href="mailto:aaronleonard@uchicago.edu">email</a>
-          <a href="https://github.com/aaronjleonard/aaronjleonard.github.io/blob/master/files/AaronLeonard-CV-July2025.pdf">cv</a>
-          <a href="https://scholar.google.com/citations?user=9VxO4EYAAAAJ&hl=en">scholar</a>
+          <a href="mailto:aaronleonard@uchicago.edu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3.5 7 8.5 6 8.5-6"/></svg>email</a>
+          <a href="https://github.com/aaronjleonard/aaronjleonard.github.io/blob/master/files/AaronLeonard-CV-July2025.pdf"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h6"/></svg>cv</a>
+          <a href="https://scholar.google.com/citations?user=9VxO4EYAAAAJ&hl=en"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.1 2.7 3 6 3s6-1.9 6-3v-5"/></svg>scholar</a>
+          <a href="https://www.linkedin.com/in/aaron-leonard-366837103/"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM10 9h3.8v1.64h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.3c0-1.26-.02-2.9-1.77-2.9-1.78 0-2.05 1.38-2.05 2.8V21h-4z"/></svg>linkedin</a>
         </div>
       </div>
     </div>
@@ -143,14 +151,6 @@
         </div>
       </div>
       <div class="paper">
-        <div class="num">03</div>
-        <div>
-          <p class="title"><a href="https://www.nber.org/papers/w34488">Social Dynamics of AI Adoption</a></p>
-          <p class="authors">with <a href="https://leonardobursztyn.com">Leonardo Bursztyn</a>, <a href="http://www.aleximas.com">Alex Imas</a>, <a href="https://www.rafaeljjd.com">Rafael Jiménez-Durán</a> &amp; <a href="https://sites.google.com/site/chrisrotheconomics/home">Christopher Roth</a></p>
-          <p class="status">Revised &amp; Resubmitted · PNAS</p>
-        </div>
-      </div>
-      <div class="paper">
         <div class="num">04</div>
         <div>
           <p class="title"><a href="https://www.nber.org/papers/w33642">Non-User Utility and Market Power: The Case of Smartphones</a></p>
@@ -177,6 +177,14 @@
       <div class="paper">
         <div class="num">★</div>
         <div>
+          <p class="title"><a href="https://www.nber.org/papers/w34488">Social Dynamics of AI Adoption</a></p>
+          <p class="authors">with <a href="https://leonardobursztyn.com">Leonardo Bursztyn</a>, <a href="http://www.aleximas.com">Alex Imas</a>, <a href="https://www.rafaeljjd.com">Rafael Jiménez-Durán</a> &amp; <a href="https://sites.google.com/site/chrisrotheconomics/home">Christopher Roth</a></p>
+          <p class="status">Accepted · Proceedings of the National Academy of Sciences</p>
+        </div>
+      </div>
+      <div class="paper">
+        <div class="num">★</div>
+        <div>
           <p class="title"><a href="https://www.nber.org/papers/w33025">12 Best Practices for Leveraging Generative AI in Experimental Research</a></p>
           <p class="authors">with <a href="https://www.samuelchang.com/about-me">Samuel Chang</a>, <a href="https://andrewrwkennedy.github.io">Andrew Kennedy</a> &amp; <a href="https://voices.uchicago.edu/jlist/">John List</a></p>
           <p class="status">J. Econ. Behavior &amp; Organization · 2026 · 246, 107564</p>
@@ -194,6 +202,7 @@
       </div>
     </div>
   </div>
+
 
 </main>
 

@@ -11,3 +11,6 @@ Gemfile.lock
 # Ingore files created by npm
 node_modules
 package-lock.json
+# Local photo originals and macOS cruft (use optimized copies in images/)
+photos/
+.DS_Store
