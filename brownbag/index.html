@@ -93,6 +93,14 @@ a{color:var(--teal);}
 <div class="offline" id="offline">Live sharing is not connected on this device — your answers will stay on this phone only.</div>
 <div class="waiting" id="waiting" hidden>Waiting for the next exercise — keep an eye on the screen.</div>
 
+<section class="card" id="whoCard">
+  <div class="row" style="margin:0">
+    <label for="whoInput"><b>Your initials</b> (shown next to your color on the big screen)</label>
+    <input type="text" id="whoInput" maxlength="3" placeholder="e.g. AL" style="width:70px; padding:6px 8px; border:1px solid var(--line); border-radius:7px; background:var(--ground); color:var(--ink); font:inherit; text-align:center; text-transform:uppercase">
+    <button class="ghost" id="whoSave">Save</button>
+  </div>
+</section>
+
 <!-- ============ EXERCISE 1: BUDGET ============ -->
 <section class="card" id="exBudget" data-stage="1">
   <h2>1 · The driver's monthly budget</h2>
@@ -127,8 +135,6 @@ a{color:var(--teal);}
     <input type="number" id="mmData" min="0" step="50" placeholder="KSh"></div>
   <div class="row"><label for="mmBoth">Switch <b>both</b> money and data</label>
     <input type="number" id="mmBoth" min="0" step="50" placeholder="KSh"></div>
-  <div class="row"><label for="mmTogether">Airtel Money, but your <b>regular contacts switch with you</b></label>
-    <input type="number" id="mmTogether" min="0" step="50" placeholder="KSh"></div>
   <button class="primary" id="mmSubmit">Lock in my prices</button>
   <div class="done">Locked in. Watch the screen for the reveal.</div>
 </section>
@@ -152,7 +158,6 @@ const MM_ITEMS = [
   {key:'money',    label:'Airtel Money only'},
   {key:'data',     label:'Airtel data only'},
   {key:'both',     label:'Both money and data'},
-  {key:'together', label:'Money, together with contacts'},
 ];
 const fmt = n => 'KSh ' + Math.round(n).toLocaleString('en-KE');
 const median = a => { if(!a.length) return null; const s=[...a].sort((x,y)=>x-y);
@@ -208,6 +213,10 @@ const FIREBASE_CONFIG = {
     if(mode !== 'present') setAudienceStage(3);  // local fallback: show everything
     return;
   }
+  try {
+    const w = localStorage.getItem('bb_who');
+    if(w && mode !== 'present') db.doc('people/'+pid).set({who: w, ts: Date.now()});
+  } catch(e){}
   db.doc('state/current').onSnapshot(doc => {
     const stage = (doc.exists && typeof doc.data().stage === 'number') ? doc.data().stage : 1;
     if(mode === 'present') setPresenterStage(stage, false);
@@ -221,6 +230,7 @@ function setAudienceStage(stage){
   // show current and all previous exercises; hide future ones
   let anyVisible = false;
   document.querySelectorAll('#app section.card').forEach(s => {
+    if(s.id === 'whoCard') return;  // initials card is always available
     const show = +s.dataset.stage <= stage;
     s.hidden = !show; anyVisible = anyVisible || show;
   });
@@ -231,6 +241,22 @@ function setAudienceStage(stage){
 function buildAudience(){
   setAudienceStage(0);  // wait until we hear the stage (or db fails)
   document.documentElement.style.setProperty('--me', colorOf(pid));
+  // initials
+  let who = '';
+  try { who = localStorage.getItem('bb_who') || ''; } catch(e){}
+  const saveWho = async () => {
+    const el = document.getElementById('whoInput');
+    who = el.value.trim().toUpperCase().slice(0,3);
+    el.value = who;
+    try { localStorage.setItem('bb_who', who); } catch(e){}
+    if(db && who) await db.doc('people/'+pid).set({who, ts: Date.now()});
+    document.getElementById('whoSave').textContent = 'Saved';
+    setTimeout(() => { const b = document.getElementById('whoSave'); if(b) b.textContent = 'Save'; }, 1500);
+  };
+  setTimeout(() => {
+    document.getElementById('whoInput').value = who;
+    document.getElementById('whoSave').addEventListener('click', saveWho);
+  }, 0);
   document.querySelector('header').insertAdjacentHTML('beforeend',
     `<p style="margin-top:6px; font-size:13.5px; color:var(--ink2)">On the big screen, your answers are
      <span class="dot round" style="background:${colorOf(pid)}; vertical-align:-1px"></span>
@@ -279,7 +305,7 @@ function hook(btnId, cardId, save){
 }
 
 /* ---------------- presenter ---------------- */
-const S = { budget:[], elig:[], mm:[], revealed:{}, stage:1 };
+const S = { budget:[], elig:[], mm:[], people:{}, revealed:{}, stage:1 };
 const STAGE_CARD = {1:'pBudget', 2:'pElig', 3:'pMM'};
 const STAGE_NAME = {1:'1 · Monthly budget', 2:'2 · Who takes the deal?', 3:'3 · Switching prices'};
 
@@ -295,6 +321,7 @@ function buildPresenter(){
     <div class="which" id="stageName">${STAGE_NAME[1]}</div>
     <button class="ghost" onclick="moveStage(1)">Open next exercise &#8250;</button>
   </div>
+  <div class="legend" id="peopleChips" style="margin:0"></div>
   <div class="exgrid">
     <section class="card" id="pBudget">
       <h2>1 · The driver's monthly budget <span class="count" id="nBudget"></span></h2>
@@ -343,7 +370,7 @@ window.reveal = id => { S.revealed[id] = true;
 
 function strip(points, max, med, actual, actualText){
   const dots = points.map(p =>
-    `<div class="dotv" style="left:${Math.min(100, p.v/max*100)}%; top:${jitter(p.id)}%; background:${colorOf(p.id)}"></div>`).join('');
+    `<div class="dotv" title="${(S.people[p.id]||'')}" style="left:${Math.min(100, p.v/max*100)}%; top:${jitter(p.id)}%; background:${colorOf(p.id)}"></div>`).join('');
   const medEl = med != null ? `<div class="medline" style="left:${Math.min(100, med/max*100)}%"></div>` : '';
   const actEl = actual != null ?
     `<div class="actline" style="left:${Math.min(100, actual/max*100)}%"></div>
@@ -351,7 +378,17 @@ function strip(points, max, med, actual, actualText){
   return `<div class="striptrack">${dots}${medEl}${actEl}</div>`;
 }
 
+function renderChips(){
+  const el = document.getElementById('peopleChips');
+  if(!el) return;
+  const ids = new Set([...Object.keys(S.people),
+    ...S.budget.map(d => d._id), ...S.elig.map(d => d._id), ...S.mm.map(d => d._id)]);
+  el.innerHTML = [...ids].map(id =>
+    `<span><span class="dot round" style="background:${colorOf(id)}"></span>${S.people[id] || '?'}</span>`).join('');
+}
+
 function renderAll(){
+  renderChips();
   if(!document.getElementById('pBudget')) return;
   document.getElementById('nBudget').textContent =
     S.budget.length ? `· ${S.budget.length} answered` : '· waiting for answers';
@@ -391,6 +428,10 @@ function renderAll(){
 }
 
 function subscribePresenter(){
+  db.collection('people').onSnapshot(snap => {
+    S.people = {};
+    snap.docs.forEach(d => { const w = d.data().who; if(w) S.people[d.id] = String(w).slice(0,3); });
+    renderAll(); });
   db.collection('budget').onSnapshot(snap => {
     S.budget = snap.docs.map(d => ({...d.data(), _id: d.id})); renderAll(); });
   db.collection('elig').onSnapshot(snap => {
