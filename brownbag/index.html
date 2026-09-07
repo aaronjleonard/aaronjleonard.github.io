@@ -299,6 +299,15 @@ function hook(btnId, cardId, save){
   document.getElementById(btnId).addEventListener('click', async () => {
     const btn = document.getElementById(btnId);
     btn.disabled = true;
+    // save initials automatically with any answer
+    try {
+      const el = document.getElementById('whoInput');
+      const w = ((el && el.value) || '').trim().toUpperCase().slice(0,3);
+      if(w){
+        try { localStorage.setItem('bb_who', w); } catch(_){}
+        if(db) await db.doc('people/'+pid).set({who: w, ts: Date.now()});
+      }
+    } catch(_){}
     try { await save(); document.getElementById(cardId).classList.add('locked'); }
     catch(e){ btn.disabled = false; }
   });
