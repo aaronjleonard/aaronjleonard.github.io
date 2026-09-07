@@ -1,0 +1,399 @@
+<title>Brown Bag Live</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ground:#F6F5F2; --card:#FFFFFF; --ink:#33393B; --ink2:#6B7276; --line:#E2DFD8;
+  --teal:#2F7E7E; --teal-soft:#DFEDED; --amber:#B07C3F; --amber-soft:#F3E8D9;
+  --brick:#B43C32; --good:#2F7E4E;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#1D2123; --card:#272C2E; --ink:#ECEAE4; --ink2:#9AA1A4; --line:#3A4144;
+    --teal:#5FB3B3; --teal-soft:#243B3B; --amber:#D2A365; --amber-soft:#3B3222;
+    --brick:#E06B60; --good:#6FBE8F;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#1D2123; --card:#272C2E; --ink:#ECEAE4; --ink2:#9AA1A4; --line:#3A4144;
+  --teal:#5FB3B3; --teal-soft:#243B3B; --amber:#D2A365; --amber-soft:#3B3222;
+  --brick:#E06B60; --good:#6FBE8F;
+}
+*{box-sizing:border-box}
+body{background:var(--ground); color:var(--ink); font-family:"IBM Plex Sans",system-ui,sans-serif;
+  margin:0; padding:16px; line-height:1.45;}
+.wrap{max-width:560px; margin:0 auto; display:flex; flex-direction:column; gap:14px;}
+.present .wrap{max-width:1060px;}
+header h1{font-family:"Archivo",sans-serif; font-weight:700; font-size:26px; margin:6px 0 2px; text-wrap:balance;}
+header p{margin:0; color:var(--ink2); font-size:14px;}
+.card{background:var(--card); border:1px solid var(--line); border-radius:10px; padding:16px 16px 18px;}
+.card[hidden]{display:none;}
+.card h2{font-family:"Archivo",sans-serif; font-weight:600; font-size:18px; margin:0 0 2px;}
+.card .sub{color:var(--ink2); font-size:13.5px; margin:0 0 12px;}
+.row{display:flex; align-items:center; gap:10px; margin:10px 0;}
+.row label{flex:1; font-size:14.5px;}
+.row output{width:86px; text-align:right; font-variant-numeric:tabular-nums; font-weight:600; font-size:15px;}
+input[type=range]{flex:1.4; accent-color:var(--me, var(--teal)); min-height:28px;}
+input[type=number]{width:96px; padding:6px 8px; border:1px solid var(--line); border-radius:7px;
+  background:var(--ground); color:var(--ink); font:inherit; font-variant-numeric:tabular-nums; text-align:right;}
+button{font:inherit; font-weight:600; border:none; border-radius:8px; padding:10px 16px; cursor:pointer;}
+.primary{background:var(--me, var(--teal)); color:#fff; width:100%; margin-top:8px;}
+.primary:disabled{opacity:.55; cursor:default;}
+.ghost{background:transparent; color:var(--teal); border:1px solid var(--teal); padding:7px 12px;}
+button:focus-visible{outline:2px solid var(--amber); outline-offset:2px;}
+.done{display:none; margin-top:10px; padding:9px 12px; border-radius:8px;
+  background:color-mix(in srgb, var(--me, var(--teal)) 16%, transparent);
+  color:var(--ink); font-size:14px; font-weight:500;}
+.locked .done{display:block;}
+.locked .primary{display:none;}
+.note{font-size:12.5px; color:var(--ink2); margin-top:10px;}
+.offline{border-left:3px solid var(--amber); padding:8px 12px; background:var(--amber-soft);
+  border-radius:6px; font-size:13px; display:none;}
+.waiting{padding:14px; border:1px dashed var(--line); border-radius:10px; color:var(--ink2);
+  font-size:14.5px; text-align:center;}
+/* presenter strips */
+.exgrid{display:flex; flex-direction:column; gap:14px;}
+.stagebar{display:flex; align-items:center; gap:12px; justify-content:space-between;
+  background:var(--card); border:1px solid var(--line); border-radius:10px; padding:10px 14px;}
+.stagebar .which{font-family:"Archivo",sans-serif; font-weight:600; font-size:16px;}
+.striprow{display:grid; grid-template-columns:200px 1fr 92px; align-items:center; gap:12px; margin:9px 0; font-size:15px;}
+.striptrack{position:relative; height:34px; background:var(--ground); border-radius:6px;}
+.dotv{position:absolute; width:10px; height:10px; border-radius:50%; background:var(--teal);
+  opacity:.75; transform:translate(-50%,-50%) scale(1); animation:popin .35s ease;}
+@keyframes popin{from{transform:translate(-50%,-50%) scale(0);} to{transform:translate(-50%,-50%) scale(1);}}
+.medline{position:absolute; top:-4px; bottom:-4px; width:3px; background:var(--ink); border-radius:2px;
+  transform:translateX(-50%); transition:left .4s ease;}
+.actline{position:absolute; top:-4px; bottom:-4px; width:3px; background:var(--amber); border-radius:2px;
+  transform:translateX(-50%);}
+.actlabel{position:absolute; top:-22px; transform:translateX(-50%); font-size:12px; font-weight:600;
+  color:var(--amber); white-space:nowrap;}
+.striprow .val{text-align:right; font-variant-numeric:tabular-nums; font-weight:600;}
+.legend{display:flex; gap:16px; font-size:13px; color:var(--ink2); margin:4px 0 14px; flex-wrap:wrap;}
+.legend span{display:inline-flex; align-items:center; gap:6px;}
+.dot{width:11px; height:11px; border-radius:3px; display:inline-block;}
+.dot.round{border-radius:50%;}
+.count{font-size:14px; color:var(--teal); font-weight:600;}
+.revealbox{display:none; margin-top:12px; padding:10px 12px; border-radius:8px; background:var(--amber-soft); font-size:14.5px;}
+.revealed .revealbox{display:block;}
+.pred{display:flex; align-items:baseline; gap:9px; margin:7px 0; font-size:15px;}
+.pred .mark{font-weight:700; width:20px;}
+.pred .ok{color:var(--good);} .pred .no{color:var(--brick);}
+.pred .nums{color:var(--ink2); font-variant-numeric:tabular-nums;}
+a{color:var(--teal);}
+@media (prefers-reduced-motion: reduce){ .dotv{animation:none} .medline{transition:none} }
+</style>
+
+<div class="wrap" id="app">
+<header>
+  <h1 id="pagetitle">Brown Bag Live</h1>
+  <p id="pagesub">Quick exercises during the talk. No right answers required — just your instincts.</p>
+</header>
+
+<div class="offline" id="offline">Live sharing is not connected on this device — your answers will stay on this phone only.</div>
+<div class="waiting" id="waiting" hidden>Waiting for the next exercise — keep an eye on the screen.</div>
+
+<!-- ============ EXERCISE 1: BUDGET ============ -->
+<section class="card" id="exBudget" data-stage="1">
+  <h2>1 · The driver's monthly budget</h2>
+  <p class="sub">The median driver in our pilots earns about <b>KSh 14,000 a month</b>.
+  Guess the median amount spent per month on each item.</p>
+  <div id="budgetSliders"></div>
+  <button class="primary" id="budgetSubmit">Lock in my guesses</button>
+  <div class="done">Locked in. The next exercise appears here when the talk moves on.</div>
+</section>
+
+<!-- ============ EXERCISE 2: ELIGIBILITY ============ -->
+<section class="card" id="exElig" data-stage="2">
+  <h2>2 · Who takes the deal?</h2>
+  <p class="sub">In the 2026 pilot we asked 70 drivers their minimum payment to have betting
+  blocked for 2 months. What share asked for <b>KSh 1,000 or less</b>?</p>
+  <div class="row">
+    <input type="range" id="eligSlider" min="0" max="100" step="1" value="50">
+    <output id="eligOut">50%</output>
+  </div>
+  <button class="primary" id="eligSubmit">Lock in my guess</button>
+  <div class="done">Locked in. The next exercise appears here when the talk moves on.</div>
+</section>
+
+<!-- ============ EXERCISE 3: MOBILE MONEY WTA ============ -->
+<section class="card" id="exMM" data-stage="3">
+  <h2>3 · Your own switching price</h2>
+  <p class="sub">Minimum payment <b>you</b> would accept to switch for <b>2 weeks</b>, KSh.
+  Answer all four. 0 means you'd do it for free.</p>
+  <div class="row"><label for="mmMoney">Use <b>Airtel Money</b> instead of M-Pesa</label>
+    <input type="number" id="mmMoney" min="0" step="50" placeholder="KSh"></div>
+  <div class="row"><label for="mmData">Use <b>Airtel data</b> instead of Safaricom</label>
+    <input type="number" id="mmData" min="0" step="50" placeholder="KSh"></div>
+  <div class="row"><label for="mmBoth">Switch <b>both</b> money and data</label>
+    <input type="number" id="mmBoth" min="0" step="50" placeholder="KSh"></div>
+  <div class="row"><label for="mmTogether">Airtel Money, but your <b>regular contacts switch with you</b></label>
+    <input type="number" id="mmTogether" min="0" step="50" placeholder="KSh"></div>
+  <button class="primary" id="mmSubmit">Lock in my prices</button>
+  <div class="done">Locked in. Watch the screen for the reveal.</div>
+</section>
+
+<p class="note" id="footnote">Kenya gambling &amp; mobile money studies · Burd &amp; Leonard · Decagon brown bag
+  · <a href="#" id="presentLink">Presenter view</a></p>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+const BUDGET_ITEMS = [
+  {key:'food',    label:'Food',                       actual:6000, max:8000},
+  {key:'airtime', label:'Airtime and data',           actual:1200, max:8000},
+  {key:'alcohol', label:'Alcohol',                    actual:580,  max:8000},
+  {key:'wagered', label:'Betting — amount wagered',   actual:3500, max:8000},
+  {key:'losses',  label:'Betting — net losses',       actual:1500, max:8000},
+];
+const ELIG_ACTUAL = 71;
+const MM_ITEMS = [
+  {key:'money',    label:'Airtel Money only'},
+  {key:'data',     label:'Airtel data only'},
+  {key:'both',     label:'Both money and data'},
+  {key:'together', label:'Money, together with contacts'},
+];
+const fmt = n => 'KSh ' + Math.round(n).toLocaleString('en-KE');
+const median = a => { if(!a.length) return null; const s=[...a].sort((x,y)=>x-y);
+  const m=Math.floor(s.length/2); return s.length%2 ? s[m] : (s[m-1]+s[m])/2; };
+const hashOf = id => { let h=0; for(const c of String(id)) h=(h*31+c.charCodeAt(0))>>>0; return h; };
+const jitter = id => 22 + (hashOf(id) % 57);
+// one stable hue per person (range dodges the amber reveal markers)
+const hueOf = id => 55 + (hashOf(id) % 300);
+const colorOf = id => `hsl(${hueOf(id)} 62% 46%)`;
+
+let mode = 'audience';
+let db = null;
+let subscribed = false;
+let pid = null;
+try {
+  pid = localStorage.getItem('bb_pid');
+  if(!pid){ pid = crypto.randomUUID(); localStorage.setItem('bb_pid', pid); }
+} catch(e){ pid = 'p' + Math.random().toString(36).slice(2); }
+
+buildAudience();
+document.getElementById('presentLink').addEventListener('click', e => {
+  e.preventDefault(); enterPresenter();
+});
+// URL flags still honored where the host passes them through
+if (new URLSearchParams(location.search).has('present') || location.hash === '#present') {
+  enterPresenter();
+}
+
+function enterPresenter(){
+  if (mode === 'present') return;
+  mode = 'present';
+  document.body.classList.add('present');
+  buildPresenter();
+  if (db && !subscribed) { subscribed = true; subscribePresenter(); }
+}
+
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyDLCXwIaoow7H7kNvx9oaw-p60L1COW9XI",
+  authDomain: "brown-bag-live.firebaseapp.com",
+  projectId: "brown-bag-live",
+  storageBucket: "brown-bag-live.firebasestorage.app",
+  messagingSenderId: "862443817575",
+  appId: "1:862443817575:web:03e0b37be47d27507062c2"
+};
+
+(function initDb(){
+  try {
+    if(!FIREBASE_CONFIG) throw new Error('no config yet');
+    firebase.initializeApp(FIREBASE_CONFIG);
+    db = firebase.firestore();
+  } catch(e){
+    const o = document.getElementById('offline'); if(o) o.style.display='block';
+    if(mode !== 'present') setAudienceStage(3);  // local fallback: show everything
+    return;
+  }
+  db.doc('state/current').onSnapshot(doc => {
+    const stage = (doc.exists && typeof doc.data().stage === 'number') ? doc.data().stage : 1;
+    if(mode === 'present') setPresenterStage(stage, false);
+    else setAudienceStage(stage);
+  });
+  if (mode === 'present' && !subscribed) { subscribed = true; subscribePresenter(); }
+})();
+
+/* ---------------- staging ---------------- */
+function setAudienceStage(stage){
+  // show current and all previous exercises; hide future ones
+  let anyVisible = false;
+  document.querySelectorAll('#app section.card').forEach(s => {
+    const show = +s.dataset.stage <= stage;
+    s.hidden = !show; anyVisible = anyVisible || show;
+  });
+  document.getElementById('waiting').hidden = anyVisible;
+}
+
+/* ---------------- audience ---------------- */
+function buildAudience(){
+  setAudienceStage(0);  // wait until we hear the stage (or db fails)
+  document.documentElement.style.setProperty('--me', colorOf(pid));
+  document.querySelector('header').insertAdjacentHTML('beforeend',
+    `<p style="margin-top:6px; font-size:13.5px; color:var(--ink2)">On the big screen, your answers are
+     <span class="dot round" style="background:${colorOf(pid)}; vertical-align:-1px"></span>
+     <b style="color:${colorOf(pid)}">this color</b>.</p>`);
+  const holder = document.getElementById('budgetSliders');
+  BUDGET_ITEMS.forEach(it => {
+    const row = document.createElement('div'); row.className = 'row';
+    row.innerHTML = `<label for="sl_${it.key}">${it.label}</label>
+      <input type="range" id="sl_${it.key}" min="0" max="${it.max}" step="50" value="2000">
+      <output id="out_${it.key}">KSh 2,000</output>`;
+    holder.appendChild(row);
+    row.querySelector('input').addEventListener('input', e => {
+      row.querySelector('output').textContent = fmt(+e.target.value);
+    });
+  });
+  const eligS = document.getElementById('eligSlider');
+  eligS.addEventListener('input', e => {
+    document.getElementById('eligOut').textContent = e.target.value + '%';
+  });
+
+  hook('budgetSubmit', 'exBudget', async () => {
+    const doc = {ts: Date.now()};
+    BUDGET_ITEMS.forEach(it => doc[it.key] = +document.getElementById('sl_'+it.key).value);
+    if(db) await db.doc('budget/'+pid).set(doc);
+  });
+  hook('eligSubmit', 'exElig', async () => {
+    if(db) await db.doc('elig/'+pid).set({pct:+document.getElementById('eligSlider').value, ts:Date.now()});
+  });
+  hook('mmSubmit', 'exMM', async () => {
+    const v = {};
+    for(const it of MM_ITEMS){
+      const el = document.getElementById('mm'+it.key[0].toUpperCase()+it.key.slice(1));
+      if(el.value === ''){ el.focus(); throw new Error('fill all'); }
+      v[it.key] = Math.max(0, +el.value);
+    }
+    if(db) await db.doc('mmwta/'+pid).set({...v, ts:Date.now()});
+  });
+}
+function hook(btnId, cardId, save){
+  document.getElementById(btnId).addEventListener('click', async () => {
+    const btn = document.getElementById(btnId);
+    btn.disabled = true;
+    try { await save(); document.getElementById(cardId).classList.add('locked'); }
+    catch(e){ btn.disabled = false; }
+  });
+}
+
+/* ---------------- presenter ---------------- */
+const S = { budget:[], elig:[], mm:[], revealed:{}, stage:1 };
+const STAGE_CARD = {1:'pBudget', 2:'pElig', 3:'pMM'};
+const STAGE_NAME = {1:'1 · Monthly budget', 2:'2 · Who takes the deal?', 3:'3 · Switching prices'};
+
+function buildPresenter(){
+  document.getElementById('pagesub').textContent = 'Presenter view — every dot is one answer, arriving live.';
+  document.getElementById('app').querySelectorAll('section').forEach(s => s.remove());
+  document.getElementById('footnote')?.remove();
+  document.getElementById('waiting')?.remove();
+  const wrap = document.querySelector('.wrap');
+  wrap.insertAdjacentHTML('beforeend', `
+  <div class="stagebar">
+    <button class="ghost" onclick="moveStage(-1)">&#8249; Back</button>
+    <div class="which" id="stageName">${STAGE_NAME[1]}</div>
+    <button class="ghost" onclick="moveStage(1)">Open next exercise &#8250;</button>
+  </div>
+  <div class="exgrid">
+    <section class="card" id="pBudget">
+      <h2>1 · The driver's monthly budget <span class="count" id="nBudget"></span></h2>
+      <div class="legend"><span><span class="dot round" style="background:linear-gradient(90deg,hsl(200 62% 46%), hsl(300 62% 46%), hsl(120 62% 46%))"></span>One color per person, across all rows</span>
+        <span><span class="dot" style="background:var(--ink)"></span>Room median</span>
+        <span><span class="dot" style="background:var(--amber)"></span>Pilot median (after reveal)</span></div>
+      <div id="pBudgetBars"></div>
+      <button class="ghost" onclick="reveal('pBudget')">Reveal pilot medians</button>
+      <div class="revealbox">Median monthly earnings are about KSh 14,000; wagering (KSh 3,500) is the
+        second-largest outlay after food — nearly 3x the airtime bill — and net losses alone are KSh 1,500.</div>
+    </section>
+    <section class="card" id="pElig" hidden>
+      <h2>2 · Who takes the deal? <span class="count" id="nElig"></span></h2>
+      <div class="legend"><span><span class="dot round" style="background:linear-gradient(90deg,hsl(200 62% 46%), hsl(300 62% 46%), hsl(120 62% 46%))"></span>One color per person, across all rows</span>
+        <span><span class="dot" style="background:var(--ink)"></span>Room median</span>
+        <span><span class="dot" style="background:var(--amber)"></span>Pilot answer (after reveal)</span></div>
+      <div id="pEligBars"></div>
+      <button class="ghost" onclick="reveal('pElig')">Reveal pilot answer</button>
+      <div class="revealbox">50 of 70 drivers (71%) asked for KSh 1,000 or less — and about 1 in 5 would have <b>paid</b> to be blocked.</div>
+    </section>
+    <section class="card" id="pMM" hidden>
+      <h2>3 · The room's switching prices <span class="count" id="nMM"></span></h2>
+      <div class="legend"><span><span class="dot round" style="background:linear-gradient(90deg,hsl(200 62% 46%), hsl(300 62% 46%), hsl(120 62% 46%))"></span>One color per person (KSh, 2 weeks)</span>
+        <span><span class="dot" style="background:var(--ink)"></span>Room median</span></div>
+      <div id="pMMBars"></div>
+    </section>
+  </div>`);
+  renderAll();
+}
+window.moveStage = d => {
+  const next = Math.min(3, Math.max(1, S.stage + d));
+  setPresenterStage(next, true);
+};
+function setPresenterStage(stage, write){
+  S.stage = stage;
+  const nameEl = document.getElementById('stageName');
+  if(nameEl) nameEl.textContent = STAGE_NAME[stage];
+  for(const [st, id] of Object.entries(STAGE_CARD)){
+    const el = document.getElementById(id);
+    if(el) el.hidden = (+st !== stage);
+  }
+  if(write && db) db.doc('state/current').set({stage, ts: Date.now()});
+}
+window.reveal = id => { S.revealed[id] = true;
+  document.getElementById(id).classList.add('revealed'); renderAll(); };
+
+function strip(points, max, med, actual, actualText){
+  const dots = points.map(p =>
+    `<div class="dotv" style="left:${Math.min(100, p.v/max*100)}%; top:${jitter(p.id)}%; background:${colorOf(p.id)}"></div>`).join('');
+  const medEl = med != null ? `<div class="medline" style="left:${Math.min(100, med/max*100)}%"></div>` : '';
+  const actEl = actual != null ?
+    `<div class="actline" style="left:${Math.min(100, actual/max*100)}%"></div>
+     <div class="actlabel" style="left:${Math.min(100, actual/max*100)}%">${actualText}</div>` : '';
+  return `<div class="striptrack">${dots}${medEl}${actEl}</div>`;
+}
+
+function renderAll(){
+  if(!document.getElementById('pBudget')) return;
+  document.getElementById('nBudget').textContent =
+    S.budget.length ? `· ${S.budget.length} answered` : '· waiting for answers';
+  document.getElementById('pBudgetBars').innerHTML = BUDGET_ITEMS.map(it => {
+    const pts = S.budget.filter(d => typeof d[it.key] === 'number')
+                        .map(d => ({v: d[it.key], id: d._id}));
+    const med = median(pts.map(p => p.v));
+    const rev = S.revealed['pBudget'];
+    return `<div class="striprow"><div>${it.label}</div>
+      ${strip(pts, it.max, med, rev ? it.actual : null, rev ? fmt(it.actual) : '')}
+      <div class="val">${med != null ? fmt(med) : '—'}</div></div>`;
+  }).join('');
+
+  document.getElementById('nElig').textContent =
+    S.elig.length ? `· ${S.elig.length} answered` : '· waiting for answers';
+  const epts = S.elig.map(d => ({v: d.pct, id: d._id}));
+  const emed = median(epts.map(p => p.v));
+  const erev = S.revealed['pElig'];
+  document.getElementById('pEligBars').innerHTML =
+    `<div class="striprow"><div>Share asking &le; KSh 1,000</div>
+      ${strip(epts, 100, emed, erev ? ELIG_ACTUAL : null, erev ? ELIG_ACTUAL + '%' : '')}
+      <div class="val">${emed != null ? Math.round(emed) + '%' : '—'}</div></div>`;
+
+  document.getElementById('nMM').textContent =
+    S.mm.length ? `· ${S.mm.length} answered` : '· waiting for answers';
+  const allv = S.mm.flatMap(d => MM_ITEMS.map(it => d[it.key])).filter(v => typeof v === 'number');
+  const maxV = Math.max(1000, ...(allv.length ? allv : [0])) * 1.12;
+  const meds = {};
+  document.getElementById('pMMBars').innerHTML = MM_ITEMS.map(it => {
+    const pts = S.mm.filter(d => typeof d[it.key] === 'number')
+                    .map(d => ({v: d[it.key], id: d._id}));
+    meds[it.key] = median(pts.map(p => p.v));
+    return `<div class="striprow"><div>${it.label}</div>
+      ${strip(pts, maxV, meds[it.key], null, '')}
+      <div class="val">${meds[it.key] != null ? fmt(meds[it.key]) : '—'}</div></div>`;
+  }).join('');
+}
+
+function subscribePresenter(){
+  db.collection('budget').onSnapshot(snap => {
+    S.budget = snap.docs.map(d => ({...d.data(), _id: d.id})); renderAll(); });
+  db.collection('elig').onSnapshot(snap => {
+    S.elig = snap.docs.map(d => ({...d.data(), _id: d.id})); renderAll(); });
+  db.collection('mmwta').onSnapshot(snap => {
+    S.mm = snap.docs.map(d => ({...d.data(), _id: d.id})); renderAll(); });
+}
+</script>
